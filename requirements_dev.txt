@@ -1,0 +1,13 @@
+gprof2dot
+pygraphviz
+
+pip
+bumpversion
+wheel
+watchdog
+flake8
+tox
+coverage
+cryptography
+PyYAML
+pytest
