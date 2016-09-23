@@ -24,6 +24,18 @@ with profile_ctx("myprofile.png"):
     foo()
 ```
 
+* As a function wrapper:
+
+```python
+@profile_decorator
+def foo():
+    1 + 1
+
+@profile_decorator("myprofile.png")
+def foo():
+    1 + 1
+```
+
 * As a function:
 
 ```python
