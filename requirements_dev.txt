@@ -11,3 +11,4 @@ coverage
 cryptography
 PyYAML
 pytest
+pytest-mock
