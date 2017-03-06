@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import click
-
-from cprofile_graph import DEFAULT_NODE_THRESHOLD, DEFAULT_EDGE_THRESHOLD, \
-    DEFAULT_GRAPH_FILENAME, DEFAULT_VIEW, DEFAULT_COLOUR_NODES_BY_SELFTIME, profile_file, \
-    profile_code
+from cprofile_graph import (DEFAULT_COLOUR_NODES_BY_SELFTIME,
+                            DEFAULT_EDGE_THRESHOLD, DEFAULT_GRAPH_FILENAME,
+                            DEFAULT_NODE_THRESHOLD, DEFAULT_VIEW, profile_code,
+                            profile_file)
 
 
 @click.command()
@@ -33,7 +33,8 @@ from cprofile_graph import DEFAULT_NODE_THRESHOLD, DEFAULT_EDGE_THRESHOLD, \
     default=DEFAULT_COLOUR_NODES_BY_SELFTIME,
     help='Colour nodes by self time, rather than by total time '
     '(sum of self and descendants)')
-def main(filename, code, graph_filename, node_threshold, edge_threshold, view, colour_nodes_by_selftime):
+def main(filename, code, graph_filename, node_threshold, edge_threshold, view,
+         colour_nodes_by_selftime):
 
     if filename:
         profile = profile_file

@@ -21,12 +21,9 @@ setup(
     packages=[
         'cprofile_graph',
     ],
-    package_dir={'cprofile_graph':
-                 'cprofile_graph'},
+    package_dir={'cprofile_graph': 'cprofile_graph'},
     entry_points={
-        'console_scripts': [
-            'cprofile_graph=cprofile_graph.cli:main'
-        ]
+        'console_scripts': ['cprofile_graph=cprofile_graph.cli:main']
     },
     include_package_data=True,
     install_requires=requirements,

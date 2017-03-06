@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from cprofile_graph import profile_ctx, profile_code, profile_decorator, profile_file
+from cprofile_graph import (profile_code, profile_ctx, profile_decorator,
+                            profile_file)
 
 
 def test_profile_ctx(tmpdir):
@@ -50,8 +51,9 @@ def test_profile_decorator_no_args(tmpdir, mocker):
         kwargs['view'] = False
         return original(*args, **kwargs)
 
-    mocker.patch('cprofile_graph._profile_decorator',
-                 mock_profile_decorator, )
+    mocker.patch(
+        'cprofile_graph._profile_decorator',
+        mock_profile_decorator, )
 
     assert not graph_file.isfile()
 

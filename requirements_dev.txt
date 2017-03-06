@@ -12,3 +12,5 @@ cryptography
 PyYAML
 pytest
 pytest-mock
+isort
+yapf

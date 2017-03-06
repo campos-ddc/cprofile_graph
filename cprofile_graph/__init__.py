@@ -173,7 +173,7 @@ def profile_file(filename,
         node_threshold=node_threshold,
         edge_threshold=edge_threshold,
         view=view,
-        colour_nodes_by_selftime=colour_nodes_by_selftime,)
+        colour_nodes_by_selftime=colour_nodes_by_selftime, )
 
 
 def profile_code(code,
@@ -228,21 +228,25 @@ def profile_code(code,
         node_threshold=node_threshold,
         edge_threshold=edge_threshold,
         view=view,
-        colour_nodes_by_selftime=colour_nodes_by_selftime,)
+        colour_nodes_by_selftime=colour_nodes_by_selftime, )
 
 
-def _profile_from_parser(parser,
-                         graph_filename=DEFAULT_GRAPH_FILENAME,
-                         node_threshold=DEFAULT_NODE_THRESHOLD,
-                         edge_threshold=DEFAULT_EDGE_THRESHOLD,
-                         view=DEFAULT_VIEW,
-                         colour_nodes_by_selftime=DEFAULT_COLOUR_NODES_BY_SELFTIME):
+def _profile_from_parser(
+        parser,
+        graph_filename=DEFAULT_GRAPH_FILENAME,
+        node_threshold=DEFAULT_NODE_THRESHOLD,
+        edge_threshold=DEFAULT_EDGE_THRESHOLD,
+        view=DEFAULT_VIEW,
+        colour_nodes_by_selftime=DEFAULT_COLOUR_NODES_BY_SELFTIME):
 
     # Parse pstats and prune graph based on thresholds
     profile = parser.parse()
 
     # gprof2dot added a new parameter in version '2016.10.13'
-    profile.prune(node_threshold, edge_threshold, colour_nodes_by_selftime=colour_nodes_by_selftime)
+    profile.prune(
+        node_threshold,
+        edge_threshold,
+        colour_nodes_by_selftime=colour_nodes_by_selftime)
 
     # Convert graph to dot format
     dot_file = StringIO()
@@ -278,6 +282,7 @@ def _view_file(path):
         # If all fails, try to use webbrowser
         import webbrowser
         webbrowser.open(path)
+
 
 #=============================================================================
 # METADATA
