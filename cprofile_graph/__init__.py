@@ -21,6 +21,7 @@ DEFAULT_GRAPH_FILENAME = 'cprofile_graph.png'
 DEFAULT_NODE_THRESHOLD = 0.005  # 0.5%
 DEFAULT_EDGE_THRESHOLD = 0.001  # 0.1%
 DEFAULT_VIEW = True
+DEFAULT_COLOUR_NODES_BY_SELFTIME = False
 
 
 @contextlib.contextmanager
@@ -137,7 +138,8 @@ def profile_file(filename,
                  graph_filename=DEFAULT_GRAPH_FILENAME,
                  node_threshold=DEFAULT_NODE_THRESHOLD,
                  edge_threshold=DEFAULT_EDGE_THRESHOLD,
-                 view=DEFAULT_VIEW):
+                 view=DEFAULT_VIEW,
+                 colour_nodes_by_selftime=DEFAULT_COLOUR_NODES_BY_SELFTIME):
     '''
     Profile Python file execution. Usage:
         profile_file("my_script.py"):
@@ -157,6 +159,9 @@ def profile_file(filename,
     :param view: Automatically open output file after profiling.
     :type view: bool
 
+    :param colour_nodes_by_selftime: Colour nodes by self time,
+        rather than by total time (sum of self and descendants)
+    :type colour_nodes_by_selftime: bool
     '''
     sys.path.insert(0, os.path.dirname(filename))
     with open(filename, 'rb') as fp:
@@ -167,7 +172,8 @@ def profile_file(filename,
         graph_filename=graph_filename,
         node_threshold=node_threshold,
         edge_threshold=edge_threshold,
-        view=view, )
+        view=view,
+        colour_nodes_by_selftime=colour_nodes_by_selftime,)
 
 
 def profile_code(code,
@@ -175,7 +181,8 @@ def profile_code(code,
                  graph_filename=DEFAULT_GRAPH_FILENAME,
                  node_threshold=DEFAULT_NODE_THRESHOLD,
                  edge_threshold=DEFAULT_EDGE_THRESHOLD,
-                 view=DEFAULT_VIEW):
+                 view=DEFAULT_VIEW,
+                 colour_nodes_by_selftime=DEFAULT_COLOUR_NODES_BY_SELFTIME):
     '''
     Profile code string. Usage:
         profile_code("import foo;foo.slow_function()"):
@@ -198,6 +205,9 @@ def profile_code(code,
     :param view: Automatically open output file after profiling.
     :type view: bool
 
+    :param colour_nodes_by_selftime: Colour nodes by self time,
+        rather than by total time (sum of self and descendants)
+    :type colour_nodes_by_selftime: bool
     '''
     globs = {
         '__name__': '__main__',
@@ -217,18 +227,22 @@ def profile_code(code,
         graph_filename=graph_filename,
         node_threshold=node_threshold,
         edge_threshold=edge_threshold,
-        view=view, )
+        view=view,
+        colour_nodes_by_selftime=colour_nodes_by_selftime,)
 
 
 def _profile_from_parser(parser,
                          graph_filename=DEFAULT_GRAPH_FILENAME,
                          node_threshold=DEFAULT_NODE_THRESHOLD,
                          edge_threshold=DEFAULT_EDGE_THRESHOLD,
-                         view=DEFAULT_VIEW):
+                         view=DEFAULT_VIEW,
+                         colour_nodes_by_selftime=DEFAULT_COLOUR_NODES_BY_SELFTIME):
 
     # Parse pstats and prune graph based on thresholds
     profile = parser.parse()
-    profile.prune(node_threshold, edge_threshold)
+
+    # gprof2dot added a new parameter in version '2016.10.13'
+    profile.prune(node_threshold, edge_threshold, colour_nodes_by_selftime=colour_nodes_by_selftime)
 
     # Convert graph to dot format
     dot_file = StringIO()
