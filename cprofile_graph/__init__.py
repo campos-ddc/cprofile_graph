@@ -295,4 +295,4 @@ __all__ = [
 
 __author__ = 'Diogo de Campos'
 __email__ = 'campos.ddc@gmail.com'
-__version__ = '1.1.0'
+__version__ = '2.0.0'
