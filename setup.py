@@ -5,7 +5,7 @@ from setuptools import setup
 
 requirements = [
     'click>=6.0',
-    'gprof2dot',
+    'gprof2dot>=2016.10.13',
     'pygraphviz',
 ]
 

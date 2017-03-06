@@ -242,7 +242,6 @@ def _profile_from_parser(
     # Parse pstats and prune graph based on thresholds
     profile = parser.parse()
 
-    # gprof2dot added a new parameter in version '2016.10.13'
     profile.prune(
         node_threshold,
         edge_threshold,
