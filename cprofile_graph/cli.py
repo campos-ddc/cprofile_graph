@@ -37,17 +37,22 @@ def main(filename, code, graph_filename, node_threshold, edge_threshold, view,
          colour_nodes_by_selftime):
 
     if filename:
-        profile = profile_file
-    elif code:
-        profile = profile_code
+        profile_file(
+            filename=filename,
+            graph_filename=graph_filename,
+            node_threshold=node_threshold,
+            edge_threshold=edge_threshold,
+            view=view,
+            colour_nodes_by_selftime=colour_nodes_by_selftime)
 
-    profile(
-        code=code,
-        graph_filename=graph_filename,
-        node_threshold=node_threshold,
-        edge_threshold=edge_threshold,
-        view=view,
-        colour_nodes_by_selftime=colour_nodes_by_selftime)
+    elif code:
+        profile_code(
+            code=code,
+            graph_filename=graph_filename,
+            node_threshold=node_threshold,
+            edge_threshold=edge_threshold,
+            view=view,
+            colour_nodes_by_selftime=colour_nodes_by_selftime)
 
 
 if __name__ == "__main__":
