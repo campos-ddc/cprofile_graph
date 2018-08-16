@@ -242,10 +242,17 @@ def _profile_from_parser(
     # Parse pstats and prune graph based on thresholds
     profile = parser.parse()
 
-    profile.prune(
-        node_threshold,
-        edge_threshold,
-        colour_nodes_by_selftime=colour_nodes_by_selftime)
+    try:
+        profile.prune(
+            node_threshold,
+            edge_threshold,
+            paths=None,
+            colour_nodes_by_selftime=colour_nodes_by_selftime)
+    except TypeError:
+        profile.prune(
+            node_threshold,
+            edge_threshold,
+            colour_nodes_by_selftime=colour_nodes_by_selftime)
 
     # Convert graph to dot format
     dot_file = StringIO()
