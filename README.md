@@ -7,7 +7,7 @@ cprofile_graph is used to generate visual graphs for Python profiling.
 
 ## Installation
 
-* First you need to install Graphviz, use `sudo apt-get install graphviz-dev` in Ubuntu or see [this link](http://www.graphviz.org/Download.php) for other platforms.
+* First you need to install Graphviz, use `sudo apt-get install graphviz graphviz-dev` in Ubuntu or see [this link](http://www.graphviz.org/Download.php) for other platforms.
 * Use pip to install `cprofile_graph`.
 
 ```bash
