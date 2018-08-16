@@ -13,7 +13,7 @@ test_requirements = []
 
 setup(
     name='cprofile_graph',
-    version='2.0.3',
+    version='2.0.4',
     description="cprofile_graph is used to generate visual graphs for Python profiling.",
     author="Diogo de Campos",
     author_email='campos.ddc@gmail.com',
