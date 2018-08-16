@@ -13,12 +13,9 @@ deploy:
   provider: pypi
   user: campos.ddc
 env:
-- TOXENV=py35
-- TOXENV=py34
-- TOXENV=py33
+- TOXENV=py36
 - TOXENV=py27
-- TOXENV=pypy
 install: pip install -U tox
 language: python
-python: 3.5
+python: 3.6
 script: tox -e ${TOXENV}
