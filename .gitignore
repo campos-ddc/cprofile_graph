@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 
 # IDE
+.idea
 .project
 .pydevproject
 .settings
@@ -49,6 +50,7 @@ nosetests.xml
 coverage.xml
 *,cover
 .hypothesis/
+.pytest_cache
 
 # Translations
 *.mo
